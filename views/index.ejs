@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <%- include('layouts/header'); -%>
+    <body>
+        
+        <%- include('layouts/navbar'); -%>
+
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('assets/img/home.png')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading">
+                            <h1>บทความแนะนำ</h1>
+                            <span class="subheading">บทความแนะนำสำหรับวันนี้</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7">
+                    <!-- Post preview-->
+                    <% for(let i = 0; i < blogposts.length; i++) { %>
+                    <div class="post-preview">
+                        <a href="/post/<%= blogposts[i]._id %>">
+                            <h2 class="post-title">
+                                หัวข้อ : <%= blogposts[i].title %>
+                            </h2>
+                            <hr size="5">
+                        </a>
+                        <p class="post-meta">
+                            <p>
+                                <b>เขียนโดย</b> : 
+                                <i><%= blogposts[i].userid.username %>  (<%= blogposts[i].datePosted.toDateString() %>)</i>
+                            </p>
+                        </p>
+                        <p class="post-subtitle">
+                            <b>รายละเอียดบทความ :</b> <i><%- blogposts[i].body %></i>
+                        </p>
+                    </div>
+                    <!-- Divider-->
+                    <hr size="5"><br>
+                    <% } %>
+                    <!-- Pager-->
+                </div>
+            </div>
+        </div>
+        
+        <%- include('layouts/footer'); -%>
+        <%- include('layouts/scripts'); -%>
+    </body>
+</html>
